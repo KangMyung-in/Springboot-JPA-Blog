@@ -50,6 +50,6 @@
 
 </div>
 
-<script src= "/blog/js/user.js"></script>
+<script src= "/js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 <%--layout폴더에 있는 footer.jsp 파일을 합침--%>

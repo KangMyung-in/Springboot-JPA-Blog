@@ -62,18 +62,18 @@ public class DummyControllerTest {
 	}
 	
 	//http://localhost:8000/blog/dummy/user
-	@GetMapping("/dummy/user")
+	@GetMapping("/dummy/users")
 	public List<User> list() { //User 에서 여러건 데이터 받을거니깐 List 타입 씀
 		return userRepository.findAll();
 	}
 	
 	//한페이지당 2건의 데이터를 리턴받을 예정임
-	@GetMapping("/dummy/user/page")
-	public List<User> pageList(@PageableDefault(size=2,sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
+	@GetMapping("/dummy/user")
+	public Page<User> pageList(@PageableDefault(size=2,sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
 		Page<User> PagingUser = userRepository.findAll(pageable);
 		
 		List<User> users = PagingUser.getContent();
-		return users;
+		return  PagingUser;
 	}
 	
 	
