@@ -29,7 +29,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //프로젝트에서 연결된 db 넘버링 전략을 따라간다는 뜻임 ex) 오라클이면 시퀸스 , mysql이면 auto_inclement임
 	private int id; //시퀸스 ,auto_inclement
 	
-	@Column(nullable = false, length = 30,unique = true) //아아디가 빈공간 안된다는뜻 ,길이는 30글자 미만 ,아이디 중복방지 위해 unique 씀
+	@Column(nullable = false, length = 100,unique = true) //아아디가 빈공간 안된다는뜻 ,길이는 30글자 미만 ,아이디 중복방지 위해 unique 씀
 	private String username; //아이디
 	
 	@Column(nullable = false, length = 100) //넉넉하게 준 이유는 1234 > 해쉬로 바꿀거임 (암호화)
@@ -44,6 +44,7 @@ public class User {
 	@Enumerated(EnumType.STRING) //@Enumerated 붙여줘서 string이란걸 알려줘야됨
 	private RoleType role; //Enum 을 쓰면 사이트에  도메인(범위)설정 가능하다  또한 RoleType 쓰면 ex) ADMIN,,USER 타입이 2개밖에 못넣게 강제됨 
 	
+	private String oauth;
 	@CreationTimestamp //데이터가 insert or update 될떄 값이 자동으로 현재시간 들어감
 	private Timestamp createdTime;
 

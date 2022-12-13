@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(value = Exception.class) //IllegalArgumentException 발생하면 그에러를 e 담아줌
 	public ResponseDto<String>  handleArgumentException(Exception e) { //모든 exceptin 받을려면  exception 씀
-		return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
+		return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage()); //500이라는 에러가 생김
 	}
 
 }

@@ -3,6 +3,7 @@ package com.cos.blog.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,6 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private PrincipalDetailService principalDetailService;
 	
+	
+	@Bean //bean으로 등록 됬으니 AuthenticationManager를 어디서나 di로 쓸수 있음
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
+
 	@Bean // ioc가 되요 !!
 	public BCryptPasswordEncoder encodePWD() { //encodePWD() 함수 호출하면, BCryptPasswordEncoder(); 객체를 리턴받음
 		return new BCryptPasswordEncoder();

@@ -28,7 +28,14 @@ public class BoardController {
 	@GetMapping("/board/{id}")
 		public String findById(@PathVariable int id, Model model) {
 		model.addAttribute("board",boardService.글상세보기(id));
+		
 		return "board/detail"; //이젠 detail.jsp 가 필요하다
+		
+	}
+	@GetMapping("/board/{id}/updateForm")
+	public String updateForm(@PathVariable int id, Model model ) { //@PathVariable 로 id값 받고 model 만든다
+		model.addAttribute("board",boardService.글상세보기(id));
+		return "board/updateForm"; //board/updateForm.jsp 를 호출한다는 뜻이다
 		
 	}
 	//User 권한이 필요
